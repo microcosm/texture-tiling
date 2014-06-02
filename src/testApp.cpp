@@ -76,12 +76,7 @@ void testApp::keyPressed(int key){
                 xTexWrapConst = GL_CLAMP_TO_EDGE;
                 xTexWrapString = "GL_CLAMP_TO_EDGE";
                 break;
-                
-            case 3:
-                xTexWrapConst = GL_REPEAT;
-                xTexWrapString = "GL_CLAMP_TO_BORDER";
 
-                break;
         }
     }
     
@@ -92,7 +87,7 @@ void testApp::keyPressed(int key){
         switch (yTexWrapMode) {
             case 0:
                 yTexWrapConst = GL_CLAMP;
-                xTexWrapString = "GL_CLAMP";
+                yTexWrapString = "GL_CLAMP";
                 break;
                 
             case 1:
