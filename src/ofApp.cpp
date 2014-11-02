@@ -56,52 +56,59 @@ void ofApp::draw(){
 void ofApp::keyPressed(int key){
     if (key == 'x') {
         xTexWrapMode++;
-        xTexWrapMode%=3;
+        xTexWrapMode%=7;
         
-        switch (xTexWrapMode) {
-            case 0:
-                xTexWrapConst = GL_CLAMP;
-                xTexWrapString = "GL_CLAMP";
-                break;
-                
-            case 1:
-                xTexWrapConst = GL_CLAMP_TO_BORDER;
-                xTexWrapString = "GL_CLAMP_TO_BORDER";
-                break;
-                
-            case 2:
-                xTexWrapConst = GL_CLAMP_TO_EDGE;
-                xTexWrapString = "GL_CLAMP_TO_EDGE";
-                break;
-                
-        }
+        xTexWrapConst = toConst(xTexWrapMode);
+        xTexWrapString = toString(xTexWrapMode);
     }
     
     if (key == 'y') {
         yTexWrapMode++;
-        yTexWrapMode%=3;
+        yTexWrapMode%=7;
         
-        switch (yTexWrapMode) {
-            case 0:
-                yTexWrapConst = GL_CLAMP;
-                yTexWrapString = "GL_CLAMP";
-                break;
-                
-            case 1:
-                yTexWrapConst = GL_CLAMP_TO_BORDER;
-                yTexWrapString = "GL_CLAMP_TO_BORDER";
-                break;
-                
-            case 2:
-                yTexWrapConst = GL_CLAMP_TO_EDGE;
-                yTexWrapString = "GL_CLAMP_TO_EDGE";
-                break;
-        }
+        yTexWrapConst = toConst(yTexWrapMode);
+        yTexWrapString = toString(yTexWrapMode);
     }
     
-    
-    
     texture.setTextureWrap(xTexWrapConst, yTexWrapConst);
+}
+
+int ofApp::toConst(int texWrapMode) {
+    switch (texWrapMode) {
+        case 0:
+            return GL_CLAMP;
+        case 1:
+            return GL_CLAMP_TO_BORDER;
+        case 2:
+            return GL_CLAMP_TO_EDGE;
+        case 3:
+            return GL_REPEAT;
+        case 4:
+            return GL_MIRRORED_REPEAT;
+        case 5:
+            return GL_MIRROR_CLAMP_ATI;
+        case 6:
+            return GL_MIRROR_CLAMP_TO_EDGE_ATI;
+    }
+}
+
+string ofApp::toString(int texWrapMode) {
+    switch (texWrapMode) {
+        case 0:
+            return "GL_CLAMP";
+        case 1:
+            return "GL_CLAMP_TO_BORDER";
+        case 2:
+            return "GL_CLAMP_TO_EDGE";
+        case 3:
+            return "GL_REPEAT";
+        case 4:
+            return "GL_MIRRORED_REPEAT";
+        case 5:
+            return "GL_MIRROR_CLAMP_ATI";
+        case 6:
+            return "GL_MIRROR_CLAMP_TO_EDGE_ATI";
+    }
 }
 
 //--------------------------------------------------------------
