@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    ofDisableArbTex();
     image.loadImage("seamless_wood_planks_texture_by_10ravens-d3991v1.jpg");
     texture = image.getTextureReference();
     
@@ -24,11 +25,10 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    tx0 = mouseX;
-    ty0 = mouseY;
-    tx1 = mouseX + texture.getWidth();
-    ty1 = mouseY + texture.getHeight();
-    
+    tx0 = ofMap(mouseX, 0, ofGetWidth(), 0, 1);
+    ty0 = ofMap(mouseY, 0, ofGetHeight(), 0, 1);
+    tx1 = tx0 + 1;
+    ty1 = ty0 + 1;
     plane.mapTexCoords(tx0, ty0, tx1, ty1);
 }
 
